@@ -30,6 +30,7 @@ requirements:
     - python >=3.5
     - pyutilib
     - jinja2
+    - lxml
 
 test:
   imports:
