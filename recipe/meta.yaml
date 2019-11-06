@@ -1,5 +1,5 @@
 {% set name = "gcovr" %}
-{% set version = "4.1" %}
+{% set version = "4.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 1ad8042fd4dc4c355fd7e605d395eefa2a59b1677dfdc308e0ef00083e8b37ee
+  sha256: 589d5cb7164c285192ed0837d3cc17001ba25211e24933f0ba7cb9cf38b8a30e
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script:
     # Removing tests because they mess up the package build in poor Windows.
     # No preprocessor selector is used because it conflicts with noarch.
@@ -30,6 +30,7 @@ requirements:
     - python >=3.5
     - pyutilib
     - jinja2
+    - lxml
 
 test:
   imports:
