@@ -28,7 +28,7 @@ requirements:
     - setuptools
   run:
     - python >=3.5
-    - pyutilib
+    - pygments
     - jinja2
     - lxml
 
