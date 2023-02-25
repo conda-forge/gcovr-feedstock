@@ -1,5 +1,5 @@
 {% set name = "gcovr" %}
-{% set version = "5.1" %}
+{% set version = "5.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: c2e3ba82fd526aec4109712ff4fa84041ea3a13c34877a1638165e8f9f4d76bc
+  sha256: 06910913a5f659b195f85041c90e387545f4d62b90fe3f65342613997b51c752
 
 build:
   noarch: python
@@ -23,11 +23,11 @@ build:
 
 requirements:
   host:
-    - python >=3.5
+    - python >=3.7
     - pip
     - setuptools
   run:
-    - python >=3.5
+    - python >=3.7
     - pygments
     - jinja2
     - lxml
