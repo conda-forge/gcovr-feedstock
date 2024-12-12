@@ -1,5 +1,5 @@
 {% set name = "gcovr" %}
-{% set version = "5.2" %}
+{% set version = "8.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 06910913a5f659b195f85041c90e387545f4d62b90fe3f65342613997b51c752
+  sha256: b435c7d741d3e83ba9d8305099245a298c287b3f8b7a5385032189702fa052a2
 
 build:
   noarch: python
