@@ -1,5 +1,6 @@
 {% set name = "gcovr" %}
-{% set version = "5.2" %}
+{% set version = "8.2" %}
+{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}
@@ -7,32 +8,33 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 06910913a5f659b195f85041c90e387545f4d62b90fe3f65342613997b51c752
+  sha256: b435c7d741d3e83ba9d8305099245a298c287b3f8b7a5385032189702fa052a2
 
 build:
   noarch: python
   number: 0
   script:
-    # Removing tests because they mess up the package build in poor Windows.
-    # No preprocessor selector is used because it conflicts with noarch.
-    # Removing these files on other OSes than poor Windows should not hurt.
-    - rm -r gcovr/tests
     - {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - gcovr = gcovr.__main__:main
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.7
-    - pygments
+    - python >={{ python_min }}
+    - pygments >=2.13.0
     - jinja2
     - lxml
+    # require tomli for all python versions to keep it noarch
+    # can be removed once 3.11 is the minimum version
+    - tomli >=1.1.0
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - gcovr
 
