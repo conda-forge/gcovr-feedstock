@@ -12,7 +12,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script:
     - {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
@@ -31,6 +31,7 @@ requirements:
     # require tomli for all python versions to keep it noarch
     # can be removed once 3.11 is the minimum version
     - tomli >=1.1.0
+    - colorlog
 
 test:
   requires:
