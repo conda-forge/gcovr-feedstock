@@ -1,5 +1,5 @@
 {% set name = "gcovr" %}
-{% set version = "8.2" %}
+{% set version = "8.3" %}
 {% set python_min = "3.9" %}
 
 package:
@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: b435c7d741d3e83ba9d8305099245a298c287b3f8b7a5385032189702fa052a2
+  sha256: 9f269bdf18cb4d565cccce23153f23038bcf2c9cfc9e9156516edcccf07a8e4b
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script:
     - {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
