@@ -7,8 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 9f269bdf18cb4d565cccce23153f23038bcf2c9cfc9e9156516edcccf07a8e4b
+  git_url: https://github.com/{{ name }}/{{ name }}.git
+  git_rev: {{ version }}
+  content_sha256: "288428ff58bf2356fd7f7fe386151d8166f27e6141610dbe038d3b79e66c6ae6"
+  content_hash_skip:
+    - .git
 
 build:
   noarch: python
