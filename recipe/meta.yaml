@@ -7,8 +7,8 @@ package:
   version: {{ version }}
 
 source:
-  url: "https://files.pythonhosted.org/packages/40/9f/2883275d71f27f81919a7f000afe7eb344496ab74d62e1c0e4a804918b9f/gcovr-8.3.tar.gz"
-  sha256: "288428ff58bf2356fd7f7fe386151d8166f27e6141610dbe038d3b79e66c6ae6"
+  url: https://files.pythonhosted.org/packages/40/9f/2883275d71f27f81919a7f000afe7eb344496ab74d62e1c0e4a804918b9f/gcovr-8.3.tar.gz
+  sha256: 288428ff58bf2356fd7f7fe386151d8166f27e6141610dbe038d3b79e66c6ae6
   
 build:
   noarch: python
