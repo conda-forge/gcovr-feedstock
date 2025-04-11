@@ -21,7 +21,9 @@ requirements:
   host:
     - python {{ python_min }}
     - pip
-    - setuptools
+    - hatchling
+    - hatch-vcs
+    - hatch-fancy-pypi-readme
   run:
     - python >={{ python_min }}
     - pygments >=2.13.0
