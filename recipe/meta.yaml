@@ -7,39 +7,44 @@ package:
   version: {{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/40/9f/2883275d71f27f81919a7f000afe7eb344496ab74d62e1c0e4a804918b9f/gcovr-8.3.tar.gz
-  sha256: 288428ff58bf2356fd7f7fe386151d8166f27e6141610dbe038d3b79e66c6ae6
-  
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/gcovr-{{ version }}.tar.gz
+  sha256: faa371f9c4a7f78c9800da655107d4f99f04b718d1c0d9f48cafdcbef0049079
+
 build:
   noarch: python
-  number: 0
-  script:
-    - {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - gcovr = gcovr.__main__:main
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
     - python {{ python_min }}
+    # upstream sets this hard dependencies, version not available in conda forge
+    - hatchling #==1.26.1
+    - hatch-vcs ==0.4.0
+    - hatch-fancy-pypi-readme ==24.1.0
     - pip
-    - hatchling
-    - hatch-vcs
-    - hatch-fancy-pypi-readme
   run:
     - python >={{ python_min }}
-    - pygments >=2.13.0
     - jinja2
     - lxml
+    - colorlog
+    - pygments >=2.13.0
     # require tomli for all python versions to keep it noarch
     # can be removed once 3.11 is the minimum version
     - tomli >=1.1.0
-    - colorlog
 
 test:
   requires:
     - python {{ python_min }}
   imports:
     - gcovr
+  commands:
+    - pip check
+    - gcovr --help
+  requires:
+    - pip
 
 about:
   home: http://gcovr.com
