@@ -10,7 +10,7 @@ source:
   sha256: faa371f9c4a7f78c9800da655107d4f99f04b718d1c0d9f48cafdcbef0049079
 
 build:
-  skip: true  # [py<39]
+  noarch: python
   entry_points:
     - gcovr = gcovr.__main__:main
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
