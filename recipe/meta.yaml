@@ -38,13 +38,12 @@ requirements:
 test:
   requires:
     - python {{ python_min }}
+    - pip
   imports:
     - gcovr
   commands:
     - pip check
     - gcovr --help
-  requires:
-    - pip
 
 about:
   home: http://gcovr.com
