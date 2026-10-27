@@ -1,6 +1,6 @@
 {% set name = "gcovr" %}
-{% set version = "8.3" %}
-{% set python_min = "3.9" %}
+{% set version = "8.7" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/gcovr-{{ version }}.tar.gz
-  sha256: faa371f9c4a7f78c9800da655107d4f99f04b718d1c0d9f48cafdcbef0049079
+  sha256: cfb9b2c373cc5be4b1cbe53250a5e4446fe6d4723c6900d3f41aa83540c8ddc8
 
 build:
   noarch: python
@@ -20,10 +20,9 @@ build:
 requirements:
   host:
     - python {{ python_min }}
-    # upstream sets this hard dependencies, version not available in conda forge
-    - hatchling #==1.26.1
-    - hatch-vcs ==0.4.0
-    - hatch-fancy-pypi-readme ==24.1.0
+    - hatchling ==1.27.0
+    - hatch-vcs ==0.5.0
+    - hatch-fancy-pypi-readme ==25.1.0
     - pip
   run:
     - python >={{ python_min }}
@@ -31,9 +30,11 @@ requirements:
     - lxml
     - colorlog
     - pygments >=2.13.0
-    # require tomli for all python versions to keep it noarch
+    # require tomli and typing_extensions for all python
+    # versions to keep it noarch
     # can be removed once 3.11 is the minimum version
     - tomli >=1.1.0
+    - typing_extensions
 
 test:
   requires:
