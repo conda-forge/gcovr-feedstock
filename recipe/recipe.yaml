@@ -1,0 +1,69 @@
+schema_version: 1
+
+context:
+  name: gcovr
+  version: "8.8"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/gcovr-${{ version }}.tar.gz
+  sha256: 0320230a432c033c1a41f34ba943082f450008c789bee05d414e532f380fd788
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - gcovr = gcovr.__main__:main
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - hatchling ==1.27.0
+    - hatch-vcs ==0.5.0
+    - hatch-fancy-pypi-readme ==25.1.0
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - jinja2
+    - lxml
+    - colorlog
+    - pygments >=2.13.0
+
+tests:
+  - python:
+      imports:
+        - gcovr
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+        - pip
+    script:
+      - gcovr --help
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE.txt
+  summary: generate GCC code coverage reports
+  description: |
+    Gcovr provides a utility for managing the use of the GNU gcov utility and
+    generating summarized code coverage results. This command is inspired by the
+    Python coverage.py package, which provides a similar utility for Python.
+  homepage: http://gcovr.com
+  repository: https://github.com/gcovr/gcovr
+  documentation: http://gcovr.com/guide.html
+
+extra:
+  recipe-maintainers:
+    - t-b
+    - jdmarques
+    - tovrstra
+    - mjscosta

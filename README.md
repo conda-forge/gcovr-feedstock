@@ -3,7 +3,7 @@ About gcovr-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gcovr-feedstock/blob/main/LICENSE.txt)
 
-Home: http://gcovr.com
+Home: http://gcovr.com/
 
 Package license: BSD-3-Clause
 
@@ -16,7 +16,6 @@ Documentation: http://gcovr.com/guide.html
 Gcovr provides a utility for managing the use of the GNU gcov utility and
 generating summarized code coverage results. This command is inspired by the
 Python coverage.py package, which provides a similar utility for Python.
-
 
 Current build status
 ====================
