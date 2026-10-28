@@ -1,10 +1,9 @@
 {% set name = "gcovr" %}
 {% set version = "8.3" %}
-{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/gcovr-{{ version }}.tar.gz
@@ -15,7 +14,7 @@ build:
   entry_points:
     - gcovr = gcovr.__main__:main
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -38,13 +37,12 @@ requirements:
 test:
   requires:
     - python {{ python_min }}
+    - pip
   imports:
     - gcovr
   commands:
     - pip check
     - gcovr --help
-  requires:
-    - pip
 
 about:
   home: http://gcovr.com
